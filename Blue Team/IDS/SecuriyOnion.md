@@ -1,5 +1,10 @@
 Security Onionの詳細な使い方と具体例
-## [Security OnionのGUIでの操作ガイド](Security OnionのGUIでの操作ガイド)
+#### [インストールと初期設定](インストールと初期設定)
+#### [ネットワークトラフィックの分析](ネットワークトラフィックの分析)
+#### [ログの収集と分析](ログの収集と分析)
+#### [アラートの設定と管理](アラートの設定と管理)
+#### [フォレンジック分析](フォレンジック分析)
+#### [GUIでの操作ガイド](GUIでの操作ガイド)
 #### 1. インストールと初期設定
 ##### 1.1 インストール
 Security OnionをISOからインストールします。インストール後、初期設定ウィザードが表示されます。
@@ -92,15 +97,16 @@ sudo tcpdump -i eth0 port 443 -w /var/log/https_traffic.pcap
 ```
 Security OnionのGUI操作に関する詳細なガイドを以下に示します。これには、Security Onionの主要なGUIツールであるKibana、Squert、TheHive、Cortexの操作方法を含みます。
 
-## Security OnionのGUIでの操作ガイド
+## GUIでの操作ガイド
 
 ### 1. Kibanaでの操作
 
 KibanaはSecurity Onionのデータを視覚的に分析するためのツールです。ログの検索、ダッシュボードの作成、視覚化の設定などが可能です。
 
 1.1 ダッシュボードのアクセス
-
+```bash
 URL: http://<SecurityOnion_IP>:5601
+```
 ログイン: デフォルトのユーザー名とパスワードでログインします。
 
 1.2 ログの検索
