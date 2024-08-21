@@ -10,18 +10,21 @@ Security Onionの詳細な使い方と具体例
 ##### 1.1 インストール
 Security OnionをISOからインストールします。インストール後、初期設定ウィザードが表示されます。
 例: インストール後、以下のコマンドでインストールされたコンポーネントを確認します。
-```bashsudo so-gateway`
-
+```bash
+sudo so-gateway`
+```
 ##### 1.2 初期設定
 初期設定ウィザードでネットワーク設定やサービスの選択を行います。
 例: so-setupコマンドで初期設定ウィザードを起動し、ネットワークインターフェースの設定を行います。
-```bashsudo so-setup`
-
+```bash
+sudo so-setup`
+```
 #### 2. ネットワークトラフィックの分析
 ##### 2.1 ネットワークトラフィックのキャプチャ
 例: tcpdumpコマンドでネットワークインターフェースeth0のトラフィックをキャプチャします。
-```bashsudo tcpdump -i eth0 -w /var/log/traffic.pcap`
-
+```bash
+sudo tcpdump -i eth0 -w /var/log/traffic.pcap`
+```
 ##### 2.2 IDS/IPSの設定と使用
 例: Suricataの設定ファイル/etc/suricata/suricata.yamlを編集し、ログ出力を有効にします。
 ```bash
