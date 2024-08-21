@@ -102,7 +102,7 @@ sudo tcpdump -i eth0 port 443 -w /var/log/https_traffic.pcap
 ```
 Security OnionのGUI操作に関する詳細なガイドを以下に示します。これには、Security Onionの主要なGUIツールであるKibana、Squert、TheHive、Cortexの操作方法を含みます。
 
-## 6 GUIでの操作ガイド
+## GUIでの操作ガイド
 
 ### 1. Kibanaでの操作
 
