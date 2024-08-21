@@ -7,8 +7,6 @@
 
 ### Kerberos事前認証無効アカウントの調査
 
-![Kerberos Pre-Auth](https://github.com/user-attachments/assets/241b929c-cd39-4f32-95e0-638316ee5d52)
-
 #### Windows用のusernameファイルの作成
 - 事前にkerbruteやenum4linux等でDCの名前のフォーマットを調べ、そのフォーマットに対応するようにファイルを作成します。
 
