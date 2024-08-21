@@ -110,7 +110,7 @@ KibanaはSecurity Onionのデータを視覚的に分析するためのツール
 
 1.1 ダッシュボードのアクセス
 ```bash
-URL: http://<SecurityOnion_IP>:5601
+http://<SecurityOnion_IP>:5601
 ログイン: デフォルトのユーザー名とパスワードでログインします。
 ```
 1.2 ログの検索
@@ -138,9 +138,9 @@ URL: http://<SecurityOnion_IP>:5601
 SquertはSecurity Onionで収集したネットワークトラフィックの検索と分析を行うためのツールです。
 
 2.1 Squertにアクセス
-
-URL: http://<SecurityOnion_IP>/squert
-
+```bash
+http://<SecurityOnion_IP>/squert
+```
 2.2 ログの検索
 
 	1.	Squertにアクセスし、ダッシュボードが表示されます。
@@ -156,9 +156,9 @@ URL: http://<SecurityOnion_IP>/squert
 TheHiveはセキュリティインシデントの管理と分析を行うためのツールです。
 
 3.1 TheHiveにアクセス
-
-URL: http://<SecurityOnion_IP>:9000
-
+```bash
+http://<SecurityOnion_IP>:9000
+```
 3.2 インシデントの作成
 
 	1.	TheHiveにログイン後、左側メニューの「Cases」を選択します。
@@ -176,9 +176,9 @@ URL: http://<SecurityOnion_IP>:9000
 Cortexは分析エンジンで、ファイルやURLの分析を行います。
 
 4.1 Cortexにアクセス
-
-URL: http://<SecurityOnion_IP>:9001
-
+```bash
+http://<SecurityOnion_IP>:9001
+```
 4.2 アナリシスの実行
 
 	1.	Cortexにログイン後、「Analyze」タブを選択します。
