@@ -60,4 +60,3 @@ lsmod
 ## 参考サイト
 - [GTFObins - 各種ファイル等を利用した権限昇格サイト](https://gtfobins.github.io/)
 ```
-```
