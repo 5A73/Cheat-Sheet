@@ -102,7 +102,7 @@ sudo tcpdump -i eth0 port 443 -w /var/log/https_traffic.pcap
 ```
 Security OnionのGUI操作に関する詳細なガイドを以下に示します。これには、Security Onionの主要なGUIツールであるKibana、Squert、TheHive、Cortexの操作方法を含みます。
 
-## GUIでの操作ガイド
+## 6 GUIでの操作ガイド
 
 ### 1. Kibanaでの操作
 
@@ -111,9 +111,8 @@ KibanaはSecurity Onionのデータを視覚的に分析するためのツール
 1.1 ダッシュボードのアクセス
 ```bash
 URL: http://<SecurityOnion_IP>:5601
-```
 ログイン: デフォルトのユーザー名とパスワードでログインします。
-
+```
 1.2 ログの検索
 
 	1.	Kibanaにログイン後、左側のメニューから「Discover」を選択します。
