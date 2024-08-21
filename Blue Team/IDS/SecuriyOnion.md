@@ -143,8 +143,31 @@ http://<SecurityOnion_IP>/squert
 ```
 2.2 ログの検索
 
-		Squertにアクセスし、ダッシュボードが表示されます。
+	1.	Squertにアクセスし、ダッシュボードが表示されます。
 	2.	検索バーにクエリを入力して、特定のイベントやアラートを検索します。例えば、"HTTP"と入力してHTTP関連のアラートをフィルタリングします。
+
+検索クエリの作成
+Kibanaのクエリ言語（KQL）を使って、Cobalt Strikeの通信に関連するログを検索します。以下は、Cobalt Strikeの通信を検知するための一般的な指標やパターンです。
+
+例1: C2通信の検出
+Cobalt StrikeのC2（Command & Control）サーバーとクライアント間の通信を検知するためには、HTTP/HTTPSトラフィックやDNSクエリを調査します。
+```bash
+http.request.uri.path: "/mall/jowA" AND http.request.uri.query: "m=htm"
+```
+これは、Cobalt Strikeの特定のビーコン通信に関連するURIパスやクエリパラメータに基づいています。
+
+例2: DNSベースのC2通信
+Cobalt StrikeはDNSトンネリングを利用することがあります。DNSログから疑わしいDNSリクエストを検索します。
+```bash
+dns.question.name: "*.example.com" AND dns.flags.response_code: "NOERROR"
+```
+疑わしいドメイン名や、頻繁に発生するDNSリクエストパターンを調査します。
+
+例3: 特定のユーザーエージェント
+Cobalt Strikeは特定のユーザーエージェントを使用して通信することがあります。
+```bash
+http.request.user_agent: "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
+```
 
 2.3 アラートの表示
 
