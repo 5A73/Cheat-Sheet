@@ -1,5 +1,4 @@
 # Cheat-Sheet
+Blue Team
 Red Team & Penetration Test
-- 03 Web Attack
-  - Directory Traversal
-  - 
+System Deployment
