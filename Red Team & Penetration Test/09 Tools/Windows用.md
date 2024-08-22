@@ -1,6 +1,3 @@
-以下に、`BloodHound`、`Mimikatz`、`Evil-WinRM`に関する内容をMarkdown形式で目次付きでまとめました。
-
-```markdown
 # 目次
 1. [BloodHound](#bloodhound)
 2. [Mimikatz](#mimikatz)
@@ -153,6 +150,3 @@ WinRM（Windows Remote Management）は、MicrosoftのWS-Management Protocolの�
   ![Hash Login](https://github.com/user-attachments/assets/422c7f6c-7d6a-47ae-a374-947c13d39b0b)
 
   ![Example](https://github.com/user-attachments/assets/764171ae-cf49-4710-95a5-508452d37fe3)
-```
-
-このMarkdown形式のドキュメントで、各ツールの使い方とコマンド例が体系的に整理されています。必要に応じて、具体的なコマンドや操作方法を追加するとさらに役立つでしょう。
