@@ -37,8 +37,9 @@ outputs:
       filename: /var/log/suricata/eve.json
 ```
 例: Suricataのサービスを再起動して設定を適用します。
-```bashsudo systemctl restart suricata`
-
+```bash
+sudo systemctl restart suricata`
+```
 #### ログの収集と分析
 ##### ログの収集
 例: Logstashの設定ファイル/etc/logstash/conf.d/logstash.confを作成し、auth.logを収集します。
