@@ -19,9 +19,11 @@ BloodHound ([GitHubリンク](https://github.com/BloodHoundAD/BloodHound)) は�
 
 3. **neo4jの起動**
    - BloodHoundはNeo4jデータベースを使用してグラフデータを管理します。
+![image](https://github.com/user-attachments/assets/f9998f0a-ad2a-48f6-9c86-a376e79806f0)
 
 4. **BloodHoundの起動**
    - Neo4jが起動したら、BloodHoundを実行し、収集したデータをアップロードします。
+![image](https://github.com/user-attachments/assets/2460d64b-eb99-4260-955c-29d846cf9421)
 
 ---
 
@@ -138,7 +140,6 @@ WinRM（Windows Remote Management）は、MicrosoftのWS-Management Protocolの�
   ```bash
   evil-winrm -i 10.10.11.14 -u maya -p 'm4y4ngs4ri'
   ```
-
   ![Password Login](https://github.com/user-attachments/assets/7020f363-a6ca-46b9-9f53-37b00809c45a)
 
 - **ハッシュ値によるログイン例**
@@ -146,7 +147,4 @@ WinRM（Windows Remote Management）は、MicrosoftのWS-Management Protocolの�
   ```bash
   evil-winrm -i 10.10.11.14 -u localadmin -H 9aa582783780d1546d62f2d102daefae
   ```
-
-  ![Hash Login](https://github.com/user-attachments/assets/422c7f6c-7d6a-47ae-a374-947c13d39b0b)
-
   ![Example](https://github.com/user-attachments/assets/764171ae-cf49-4710-95a5-508452d37fe3)
