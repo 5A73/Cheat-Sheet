@@ -132,7 +132,6 @@ WinRM（Windows Remote Management）は、MicrosoftのWS-Management Protocolの�
   Invoke-Binary /opt/privsc/winPEASx64.exe
   ```
 
-  ![Evil-WinRM Example](https://github.com/user-attachments/assets/3f9ef784-7508-431b-9423-8619fc59e637)
 
 - **パスワードログイン例**
 
