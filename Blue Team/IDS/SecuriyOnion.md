@@ -119,7 +119,73 @@ http://<SecurityOnion_IP>:5601
 		Kibanaにログイン後、左側のメニューから「Discover」を選択します。
 	2.	インデックスパターン（例えばsuricata-*）を選択します。
 	3.	検索バーにクエリを入力します。例えば、alert.msg:"Possible HTTP attack"と入力して、HTTP攻撃のアラートを検索します。
+- ## 検索クエリの作成
+Kibanaのクエリ言語（```）を使って、Cobalt Strikeの通信に関連するログを検索します。以下は、Cobalt Strikeの通信を検知するための一般的な指標やパターンです。
 
+例1: C2通信の検出
+Cobalt StrikeのC2（Command & Control）サーバーとクライアント間の通信を検知するためには、HTTP/HTTPSトラフィックやDNSクエリを調査します。
+```bash
+http.request.uri.path: "/mall/jowA" AND http.request.uri.query: "m=htm"
+```
+これは、Cobalt Strikeの特定のビーコン通信に関連するURIパスやクエリパラメータに基づいています。
+ HTTPリクエストの異常検出
+HTTPリクエストで異常なパターンやC2の兆候を探すクエリです。
+```bash
+HttpRequests
+| where RequestUri contains "/control" or RequestUri contains "/command" // C2サーバーの一般的なパス
+| summarize Count = count() by RequestUri, bin(TimeGenerated, 1h)
+| order by Count desc
+```
+例2: DNSベースのC2通信
+Cobalt StrikeはDNSトンネリングを利用することがあります。DNSログから疑わしいDNSリクエストを検索します。
+```bash
+dns.question.name: "*.example.com" AND dns.flags.response_code: "NOERROR"
+```
+疑わしいドメイン名や、頻繁に発生するDNSリクエストパターンを調査します。
+DNSクエリに基づくC2通信の検出
+C2サーバーへのDNSクエリを検出するクエリです。通常、C2サーバーは定期的にDNSリクエストを受けることがあります。
+```bash
+DnsEvents
+| where QueryType == "A" or QueryType == "CNAME"
+| where QueryName endswith ".top" or QueryName endswith ".xyz" // よく使われるC2ドメインの例
+| summarize Count = count() by QueryName, bin(TimeGenerated, 1h)
+| order by Count desc
+```
+例3: 特定のユーザーエージェント
+Cobalt Strikeは特定のユーザーエージェントを使用して通信することがあります。
+```bash
+http.request.user_agent: "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
+```
+これらのクエリは、C2通信の兆候を示すデータを見つけるために役立ちます。
+4. ネットワーク接続の検出
+特定のポートや外部IPアドレスへの接続がC2通信の兆候である可能性があります。
+
+```bash
+NetworkConnections
+| where RemotePort in (80, 443, 8080) // よく使用されるポート
+| where RemoteIpAddress in ("123.45.67.89", "98.76.54.32") // C2サーバーのIPアドレス
+| summarize Count = count() by RemoteIpAddress, bin(TimeGenerated, 1h)
+| order by Count desc
+4. PowerShellスクリプトの実行
+PowerShellスクリプトの実行にC2通信が含まれているかどうかを確認するクエリです。
+
+```
+```bash
+PowerShellEvents
+| where ScriptBlockText contains "Invoke-WebRequest" or ScriptBlockText contains "Invoke-RestMethod" // C2通信に使用されるコマンド
+| summarize Count = count() by ScriptBlockText, bin(TimeGenerated, 1h)
+| order by Count desc
+```
+
+5. メール通信の検出
+メール通信にC2の兆候があるかもしれない場合のクエリです。
+```bash
+EmailEvents
+| where Subject contains "C2" or Body contains "C2"
+| summarize Count = count() by Subject, bin(TimeGenerated, 1h)
+| order by Count desc
+これらのクエリをカスタマイズして、特定の環境や要件に合わせて調整できます。
+```
 3 ダッシュボードの作成
 
 		Kibanaの左側メニューから「Dashboard」を選択します。
@@ -138,7 +204,7 @@ http://<SecurityOnion_IP>:5601
 
 SquertはSecurity Onionで収集したネットワークトラフィックの検索と分析を行うためのツールです。
 
-2 Squertにアクセス
+2.1 Squertにアクセス
 ```bash
 http://<SecurityOnion_IP>/squert
 ```
@@ -147,32 +213,10 @@ http://<SecurityOnion_IP>/squert
 	1.	Squertにアクセスし、ダッシュボードが表示されます。
 	2.	検索バーにクエリを入力して、特定のイベントやアラートを検索します。例えば、"HTTP"と入力してHTTP関連のアラートをフィルタリングします。
 
-## 検索クエリの作成
-Kibanaのクエリ言語（KQL）を使って、Cobalt Strikeの通信に関連するログを検索します。以下は、Cobalt Strikeの通信を検知するための一般的な指標やパターンです。
-
-例1: C2通信の検出
-Cobalt StrikeのC2（Command & Control）サーバーとクライアント間の通信を検知するためには、HTTP/HTTPSトラフィックやDNSクエリを調査します。
-```bash
-http.request.uri.path: "/mall/jowA" AND http.request.uri.query: "m=htm"
-```
-これは、Cobalt Strikeの特定のビーコン通信に関連するURIパスやクエリパラメータに基づいています。
-
-例2: DNSベースのC2通信
-Cobalt StrikeはDNSトンネリングを利用することがあります。DNSログから疑わしいDNSリクエストを検索します。
-```bash
-dns.question.name: "*.example.com" AND dns.flags.response_code: "NOERROR"
-```
-疑わしいドメイン名や、頻繁に発生するDNSリクエストパターンを調査します。
-
-例3: 特定のユーザーエージェント
-Cobalt Strikeは特定のユーザーエージェントを使用して通信することがあります。
-```bash
-http.request.user_agent: "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
-```
 
 2.3 アラートの表示
 
-		Squertの「Events」タブを選択します。
+	1.	Squertの「Events」タブを選択します。
 	2.	フィルターオプションを使って、特定のIPアドレスやポート番号に基づくアラートを表示します。
 
 3. TheHiveでの操作
