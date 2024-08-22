@@ -7,7 +7,7 @@ Splunkは、機械データの収集、インデクシング、検索、可視�
 2. [データのインデクシング](#データのインデクシング)
 3. [データの検索](#データの検索)
    -  [SplunkでのC2トラフィック検索](#SplunkでのC2トラフィック検索)
-   -   [Cobalt Strikeのログ検索](#Cobalt Strikeのログ検索)
+   -   [CobaltStrikeのログ検索](#CobaltStrikeのログ検索)
 5. [ダッシュボードと可視化](#ダッシュボードと可視化)
 6. [アラートの設定](#アラートの設定)
 7. [レポートの作成](#レポートの作成)
@@ -119,7 +119,7 @@ index=dns_logs OR index=web_logs | stats count by src_ip, dest_ip, query, User-A
 ```
 ---
 
-## Cobalt Strikeのログ検索
+## CobaltStrikeのログ検索
 
 ### 1. **Cobalt Strikeの一般的な特徴**
 
