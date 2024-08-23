@@ -170,8 +170,16 @@ index=dns_logs | search query="*.maliciousdomain.com"
 index=dns_logs | search length(query) > 50
 ```
 
-### 5. **異常なデータ転送量の検出**
+### 5. **異常なアクセス数及びデータ転送量の検出**
 
+異常なアクセス数
+```bash
+index = * search src_ip = プロキシIP | stats count by src_ip dest_ip |sort -
+ count
+```
+```bash
+index = * search dest_ip = プロキシIP | stats count by src_ip dest | sort - count
+```
 Cobalt Strikeのセッションは異常なデータ転送量を示すことがあります。
 
 **例**: 大量のデータ転送が行われているセッションを検索する
