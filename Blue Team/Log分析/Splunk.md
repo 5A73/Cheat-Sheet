@@ -136,7 +136,11 @@ Cobalt Strikeが使用する可能性のあるポート（例: `50050`）でト�
 ```plaintext
 index=network_logs | search dest_port=50050
 ```
-
+```bash
+index=squid_logs sourcetype=squid_access dest_port=80 OR dest_port=443
+| stats count by src_ip dst_ip
+| sort - count
+```
 ### 3. **HTTP/HTTPSトンネリングの検出**
 
 Cobalt StrikeはHTTP/HTTPSで通信することがあるため、異常な`User-Agent`や特定のURIパスを探します。
@@ -268,12 +272,11 @@ Cobalt StrikeのC2サーバーがDNSトンネリングを使用する場合が�
 ```bash
 index=dns_logs | timechart span=1m count by query | where count > 100
 ```
----
 
-このガイドを使って、Cobalt StrikeのログをSplunkで効果的に検索し、異常なアクティビティを検出することができます。
----
 
-このガイドを参考にして、SplunkでのC2トラフィックの検索と分析を効果的に行うことができます。
+
+
+---
 ## ダッシュボードと可視化
 
 Splunkでは、検索結果をダッシュボードやチャートで可視化し、データの洞察を得ることができます。
