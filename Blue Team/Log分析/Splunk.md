@@ -117,7 +117,84 @@ Splunkでは、検索クエリを使用してインデクシングされたデ�
 # 検索クエリの例
 index="main" sourcetype="access_combined" status=404
 ```
+---
+### SplunkでのWebサーバ攻撃の検索
 
+#### 目次
+
+1. [SQLインジェクション](#sqlインジェクション)
+2. [PHPインジェクション](#phpインジェクション)
+3. [クロスサイトスクリプティング（XSS）](#クロスサイトスクリプティングxss)
+4. [SSRF（Server-Side Request Forgery）](#ssrf-server-side-request-forgery)
+5. [OSコマンドインジェクション](#osコマンドインジェクション)
+6. [ディレクトリトラバーサル](#ディレクトリトラバーサル)
+7. [Remote Code Execution (RCE)](#remote-code-execution-rce)
+8. [Local File Inclusion (LFI)](#local-file-inclusion-lfi)
+
+#### SQLインジェクション
+
+```bash
+index=web_logs sourcetype=access_combined
+("union select" OR "select * from" OR "or 1=1" OR "drop table" OR "and 1=1")
+| stats count by src_ip, uri
+```
+
+#### PHPインジェクション
+
+```bash
+index=web_logs sourcetype=access_combined
+("php://input" OR "php://filter" OR "eval(" OR "system(")
+| stats count by src_ip, uri
+```
+
+#### クロスサイトスクリプティング（XSS）
+
+```bash
+index=web_logs sourcetype=access_combined
+("<script>" OR "javascript:" OR "onerror=" OR "alert(")
+| stats count by src_ip, uri
+```
+
+#### SSRF（Server-Side Request Forgery）
+
+```bash
+index=web_logs sourcetype=access_combined
+("http://localhost" OR "http://127.0.0.1" OR "http://metadata")
+| stats count by src_ip, uri
+```
+
+#### OSコマンドインジェクション
+
+```bash
+index=web_logs sourcetype=access_combined
+("| ls" OR "| cat" OR "| whoami" OR "| id")
+| stats count by src_ip, uri
+```
+
+#### ディレクトリトラバーサル
+
+```bash
+index=web_logs sourcetype=access_combined
+("../../../" OR "..%2F" OR "..\\")
+| stats count by src_ip, uri
+```
+
+#### Remote Code Execution (RCE)
+
+```bash
+index=web_logs sourcetype=access_combined
+("system(" OR "exec(" OR "shell_exec(" OR "passthru(" OR "popen(")
+| stats count by src_ip, uri
+```
+
+#### Local File Inclusion (LFI)
+
+```bash
+index=web_logs sourcetype=access_combined
+("../../../etc/passwd" OR "....//....//....//etc/passwd" OR "php://filter/read=convert.base64-encode/resource=")
+| stats count by src_ip, uri
+```
+---
 ## CobaltStrikeのログ検索
 
 ### 1. **Cobalt Strikeの一般的な特徴**
