@@ -66,7 +66,7 @@ net user hacker newpassword
 ```
 ```bash
 net user /domain hacker newpassword
-``
+```
   - ### コンパイル
     - gcc hello.c -o hello.exe
 
@@ -121,6 +121,8 @@ net user /domain hacker newpassword
 # Event Viewer
 - Application
 - Security
+  - ユーザ追加（4720）
+  - プロセス作成（4688）
 - System
   - シャットダウン開始時刻 (ID 1074)
 
