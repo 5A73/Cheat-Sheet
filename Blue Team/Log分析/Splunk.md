@@ -209,25 +209,25 @@ Sysmon（System Monitor）は、Windowsイベントログを詳細に記録す�
 Cobalt StrikeはPowerShellコマンドを実行することがあります。SysmonイベントID1（プロセス作成イベント）でPowerShellコマンドを監視します。
 
 例: PowerShellコマンドラインにiex（Invoke-Expression）が含まれるイベントを検索する
-
+```bash
 index=sysmon_logs sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=1 | search CommandLine="iex*"
-
+```
 1.2 ネットワーク接続の監視
 
 SysmonイベントID3（ネットワーク接続イベント）でCobalt StrikeのC2トラフィックを検出します。
 
 例: 特定のポートへのネットワーク接続を検索する
-
+```bash
 index=sysmon_logs sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=3 | search DestinationPort=50050
-
+```
 1.3 ファイル作成イベントの監視
 
 SysmonイベントID11（ファイル作成イベント）で、Cobalt Strikeのペイロードやマルウェアファイルの作成を検出します。
 
 例: 特定のファイルパスに関連するイベントを検索する
-
+```bash
 index=sysmon_logs sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=11 | search FileName="*.exe"
-
+```
 2. Windowsイベントログでの検出
 
 Windowsイベントログでも、Cobalt Strikeの活動に関連する情報を検索できます。
@@ -237,17 +237,17 @@ Windowsイベントログでも、Cobalt Strikeの活動に関連する情報を
 新しく作成されたプロセスを監視します。
 
 例: 特定のコマンドラインオプションを含むプロセス作成イベントを検索する
-
+```bash
 index=windows_logs sourcetype=WinEventLog:Security EventCode=4688 | search CommandLine="powershell*"
-
+```
 2.2 イベントID5156（ネットワーク接続の許可）
 
 ネットワーク接続に関する情報を確認します。
 
 例: 特定のポートへの接続を検索する
-
+```bash
 index=windows_logs sourcetype=WinEventLog:Security EventCode=5156 | search DestinationPort=50050
-
+```
 3. カスタムフィルタリングとアラート
 
 特定の条件に基づいてアラートを設定し、Cobalt Strikeのアクティビティをリアルタイムで監視します。
@@ -257,17 +257,17 @@ index=windows_logs sourcetype=WinEventLog:Security EventCode=5156 | search Desti
 Cobalt Strikeは大量のデータを転送することがあるため、大量のデータ転送を検出します。
 
 例: 特定のIPアドレス間での大容量データ転送を監視する
-
+```bash
 index=network_logs | stats sum(bytes) by src_ip, dest_ip | where sum(bytes) > 1000000
-
+```
 3.2 定期的なDNSリクエストの監視
 
 Cobalt StrikeのC2サーバーがDNSトンネリングを使用する場合があります。
 
 例: 短時間で多数のDNSリクエストを検索する
-
+```bash
 index=dns_logs | timechart span=1m count by query | where count > 100
-
+```
 ---
 
 このガイドを使って、Cobalt StrikeのログをSplunkで効果的に検索し、異常なアクティビティを検出することができます。
