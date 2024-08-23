@@ -55,15 +55,18 @@
  
   - domainサービス列挙
     - setspn -T ドメイン -F -Q */*
-  - ### ユーザ関連
+### ユーザ関連
     - ユーザの追加
       - net user hacker hacker123 /add
       - net localgroup Administrators hacker /add
       - net localgroup "Remote Desktop Users" hacker /ADD
     - パスワード変更
 ```bash
-      net user hacker newpassword
+net user hacker newpassword
 ```
+```bash
+net user /domain hacker newpassword
+``
   - ### コンパイル
     - gcc hello.c -o hello.exe
 
