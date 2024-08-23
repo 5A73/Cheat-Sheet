@@ -16,11 +16,12 @@
   - `shutdown -f -r`
   - `shutdown -f -t30`
   - 
-  ### 他社の権限でコマンド実行
+  ### 他者の権限でコマンド実行
   #### runas
   - `runas /user:Administrator cmd`
   ##### 認証情報を消さない
   - `runas /user:Administrator /savecred "notepad.exe"`
+※通常は使用しない
   ### 名前解決
   #### nslookup
   - `nslookup -type=TXT  ドメイン`
@@ -59,7 +60,10 @@
       - net user hacker hacker123 /add
       - net localgroup Administrators hacker /add
       - net localgroup "Remote Desktop Users" hacker /ADD
-
+    - パスワード変更
+```bash
+      net user hacker newpassword
+```
   - ### コンパイル
     - gcc hello.c -o hello.exe
 
