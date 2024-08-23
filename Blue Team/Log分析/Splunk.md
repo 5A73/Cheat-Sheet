@@ -174,11 +174,11 @@ index=dns_logs | search length(query) > 50
 
 異常なアクセス数
 ```bash
-index = * search src_ip = プロキシIP | stats count by src_ip dest_ip |sort -
+index = * src_ip = プロキシIP | stats count by src_ip dest_ip |sort -
  count
 ```
 ```bash
-index = * search dest_ip = プロキシIP | stats count by src_ip dest | sort - count
+index = * dest_ip = プロキシIP | stats count by src_ip dest | sort - count
 ```
 Cobalt Strikeのセッションは異常なデータ転送量を示すことがあります。
 
