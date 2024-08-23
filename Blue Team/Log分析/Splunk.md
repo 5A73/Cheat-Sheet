@@ -56,69 +56,6 @@ Splunkでは、検索クエリを使用してインデクシングされたデ�
 index="main" sourcetype="access_combined" status=404
 ```
 
-### SplunkでのC2トラフィック検索
-
-### 1. DNSリクエストの検索
-
-C2トラフィックの一部はDNSリクエストを利用することがあります。特に、特定のドメインやサブドメインに対するリクエストを監視します。
-
-**例**: C2ドメインに対するDNSクエストを検索する
-
-```plaintext
-index=dns_logs | search query="*c2domain.com*"
-```
-
-### 2. HTTPリクエストの検索
-
-HTTPベースのC2トラフィックを検出するために、異常なリクエストパターンや特定のURLパスを探します。
-
-**例**: `User-Agent`が`malicious-agent`であるHTTPリクエストを検索する
-
-```plaintext
-index=web_logs | search "User-Agent=malicious-agent"
-```
-
-### 3. ポート番号によるフィルタリング
-
-C2トラフィックが特定のポートを使用する場合、そのポート番号でフィルタリングします。
-
-**例**: 特定のポート（例: `4444`）を使用しているトラフィックを検索する
-
-```plaintext
-index=network_logs | search dest_port=4444
-```
-
-### 4. 特定のプロトコルによる検索
-
-C2トラフィックが特定のプロトコル（例: TCP）を使用している場合、そのプロトコルでフィルタリングします。
-
-**例**: TCPトラフィックで異常な接続を探す
-
-```plaintext
-index=network_logs | search protocol=TCP
-```
-
-### 5. エキスパートによる異常検知
-
-異常なデータ転送量や予期しないタイミングのトラフィックはC2の兆候です。
-
-**例**: 大量のデータ転送が行われているセッションを検索する
-
-```plaintext
-index=network_logs | stats sum(bytes) by src_ip, dest_ip | where sum(bytes) > 1000000
-```
-
-### 6. 高度な分析と相関
-
-複数のデータソースを組み合わせて、より高度なC2トラフィックの分析を行います。
-
-**例**: DNSリクエストとHTTPリクエストを相関させて分析する
-
-```plaintext
-index=dns_logs OR index=web_logs | stats count by src_ip, dest_ip, query, User-Agent
-```
----
-
 ## CobaltStrikeのログ検索
 
 ### 1. **Cobalt Strikeの一般的な特徴**
