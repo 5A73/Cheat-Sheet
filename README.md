@@ -5,9 +5,11 @@
 ### [IDS]()
 - Security Onion
 ### [Log分析]()
-
+- [Kibana]
+- [Splunk]
 ### [マルウェア解析](#)
-
+- [静的解析]
+  - [Ghidra]
 
 ## Red Team & Penetration Test
 - [General]()
@@ -19,4 +21,8 @@
 - [Post Exploitation]
 - [Active Directory]
 - [Tools]
+
+
 ## System Deployment
+- [ファイル転送]
+- [通信点検]
