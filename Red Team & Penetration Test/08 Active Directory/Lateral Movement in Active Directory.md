@@ -1,6 +1,6 @@
 ## 目次
 
-1. [psexec - smbexec - wmiexec - atexec](#psexec---smbexec---wmiexec---atexec)
+1. [Impacket](#impacket)
     - [psexec](#psexec)
     - [smbexec](#smbexec)
     - [wmiexec](#wmiexec)
@@ -12,7 +12,7 @@
 4. [Pass the ticket](#pass-the-ticket)
 5. [Golden Ticket](#golden-ticket)
 
-## psexec - smbexec - wmiexec - atexec
+## impacket
 
 ここでは、主に資格情報やハッシュを用いてリモートでコマンドを実行するためのツールについて説明します。
 
