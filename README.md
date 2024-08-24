@@ -7,9 +7,14 @@
 ### [Log分析]()
 - [Kibana]
 - [Splunk]
+- [Windows Event log]
+### [トラフィック分析]
 ### [マルウェア解析](#)
+- [表層解析]
+- [動的解析]
 - [静的解析]
   - [Ghidra]
+
 
 ## Red Team & Penetration Test
 - [General]()
