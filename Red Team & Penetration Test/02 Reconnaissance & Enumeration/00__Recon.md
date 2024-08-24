@@ -54,7 +54,9 @@ rustscan -r 1-65535 -a 10.10.11.248 -- -sV -Pn -A
 ```
 ---
 ## masscan
-
+```bash
+masscan -p80,443 10.0.0.0/8 --rate=10000
+```
 ---
 ## Bash
 ```bash
