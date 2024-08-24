@@ -27,7 +27,7 @@ nmap -sV -sC -p80 192.168.0.101
 ```bash
 nmap -A -p80 192.168.0.101
 ```
-	- -A OS検出、バージョン検出、スクリプトスキャン、traceroute
+- -A OS検出、バージョン検出、スクリプトスキャン、traceroute
 #### サービスの既知の脆弱性
 ```bash
 nmap --script  vuln -p80 192.168.0.101
