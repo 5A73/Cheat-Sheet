@@ -4,11 +4,15 @@
 ## Blue Team
 ### [IDS]()
 - Security Onion
+### [デジタルフォレンジック]
 ### [Log分析]()
 - [Kibana]
 - [Splunk]
 - [Windows Event log]
-### [トラフィック分析]
+### [トラフィック分析]()
+### [メモリ解析]
+- [volatility]
+
 ### [マルウェア解析](#)
 - [表層解析]
 - [動的解析]
