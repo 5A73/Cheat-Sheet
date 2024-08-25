@@ -1,4 +1,5 @@
-
+### Burp Suiteを起動する
+### ブラウザのFox Proxyを有効にする
 ### ブラウザからアクセスし入力フォームに適当な文字を入力し送信する
 ![image](https://github.com/user-attachments/assets/3daa7f7c-903e-4489-87f2-e54ee9c6019f)
 
