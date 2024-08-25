@@ -149,7 +149,9 @@ curl http://<LHOST>/<FILE> > <OUTPUT_FILE>
 ## データベース操作
 
 ### mysql
-
+```bash
+mysql -u username -p
+```
 ```bash
 mysql -h localhost -u username -p
 show databases;
