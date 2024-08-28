@@ -20,7 +20,10 @@ kex --win -m
 # 主要コマンド
 
 ## Command Prompt
-
+### lock
+```cmd
+rundll32.exe user32.dll,LockWorkStation
+```
 ### ログオフ
 ```bash
 logoff
