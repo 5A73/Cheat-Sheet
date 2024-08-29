@@ -173,14 +173,15 @@ select from * tablenames;
 ##### 圧縮
 
 ```bash
-unzip test.zip
+zip archive.zip file.txt
 ```
 
 ##### 解凍
 
 ```bash
-# .zipの解凍コマンドがありませんでしたので、必要であれば追記してください。
+unzip test.zip
 ```
+
 
 #### .gz
 
