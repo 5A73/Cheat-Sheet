@@ -70,10 +70,12 @@ update-grub
 # システムを再起動します
 reboot
 ```
+## HDDの使用状況
 ### df
 ```bash
 df -h
 ```
+## 特定のディレクトリの確認
 ### du
 
 ```bash
