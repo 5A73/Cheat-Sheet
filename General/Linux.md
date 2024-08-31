@@ -32,6 +32,7 @@
    - [find](#find)
    - [grep](#grep)
    - [echo](#echo)
+   - [Linuxで`.docx`や`.xlsx`ファイルを表示する方法](#Linuxで`.docx`や`.xlsx`ファイルを表示する方法)
 9. [git](#git)
 
 ---
