@@ -32,7 +32,7 @@
    - [find](#find)
    - [grep](#grep)
    - [echo](#echo)
-   - [Linuxで`.docx`や`.xlsx`ファイルを表示する方法](#Linuxで`.docx`や`.xlsx`ファイルを表示する方法)
+   - [Linuxで.docxや.xlsxファイルを表示する方法](#Linuxで.docxや.xlsxファイルを表示する方法)
 9. [git](#git)
 
 ---
@@ -287,11 +287,7 @@ grep -r hoge
 echo "10.10.11.249 play.crafty.htb" | tee -a /etc/hosts
 ```
 
-
-
-
-
-### Linuxで`.docx`や`.xlsx`ファイルを表示する方法
+### Linuxで.docxや.xlsxファイルを表示する方法
 
 ### 1. LibreOfficeを使用する
 LibreOfficeは、Microsoft Officeファイル形式をサポートするオープンソースのオフィススイートです。
