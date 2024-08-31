@@ -8,6 +8,7 @@
      - [Terminator](#Terminator)
      - [tmux](#tmux)
    - [カーネルバージョン変更](#カーネルバージョン変更)
+   - [df](#df)
 2. [Network](#Network)
    - [iptables](#iptables)
 3. [ユーザ](#ユーザ)
@@ -69,7 +70,15 @@ update-grub
 # システムを再起動します
 reboot
 ```
+### df
+```bash
+df -h
+```
+### du
 
+```bash
+du -sh /home
+```
 ## Network
 
 ### iptables
