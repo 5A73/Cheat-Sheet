@@ -147,3 +147,7 @@ ps> iwr -UseDefaultCredentials <servicename>://<computername>
 ```bash
 secretsdump.py <domain>/<user>:<password>@<IP>
 ```
+
+## サイト
+- ＡＤの攻撃情報
+https://wadcoms.github.io/#
