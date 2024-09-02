@@ -8,7 +8,7 @@
 7. [Kerberoasting](#kerberoasting)
 8. [Silver Tickets](#silver-tickets)
 9. [Secretsdump](#secretsdump)
-
+10. [サイト](#サイト)
 ## Enumeration
 ドメインに参加しているマシンでローカル管理者を確認する:
 ```bash
