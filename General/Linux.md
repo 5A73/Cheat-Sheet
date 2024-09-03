@@ -29,6 +29,7 @@
    - [viエディタ](#viエディタ)
    - [ls](#ls)
    - [awk](#awk)
+   - [sed](#sed)
    - [cp](#cp)
    - [find](#find)
    - [grep](#grep)
@@ -271,7 +272,18 @@ exeのあるファイルを表示
 ```bash
 awk '{print $6}' wordpress.log | sort | uniq -c
 ```
+### sed
+例1: 標準入力からバックスラッシュを削除
+```bash
+echo "User\\Name" | sed 's/User\\//g'
+```
+このコマンドを実行すると、「UserName」が出力されます。
 
+例2: ファイル内の「User」からバックスラッシュを削除
+```bash
+
+sed 's/User\\//g' inputfile.txt > outputfile.txt
+```
 ### cp
 
 ```bash
