@@ -1,3 +1,4 @@
+## putリクエストを受け付ける簡易サーバ
 import os
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
