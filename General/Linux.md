@@ -284,6 +284,11 @@ echo "User\\Name" | sed 's/User\\//g'
 
 sed 's/User\\//g' inputfile.txt > outputfile.txt
 ```
+例3: awkとの組み合わせ
+```bash
+ awk '{print $3}' users.txt| sed 's/User\\//g'  > username.txt
+```
+---
 ### cp
 
 ```bash
