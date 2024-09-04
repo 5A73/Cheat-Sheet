@@ -221,7 +221,6 @@ tar -zcvf xxxx.tar.gz directory
 ##### 解凍
 
 ```bash
-tar -zxvf xxxx.tar.gz
 tar -xzvf filename.tar.gz
 ```
 
