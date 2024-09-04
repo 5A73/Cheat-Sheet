@@ -212,11 +212,11 @@ gzip -d file.gz
 ### .tar
 #### 圧縮
 ```bash
-tar -cvf archive_name.tar /path/to/directory_or_files
+tar -zvf archive_name.tar /path/to/directory_or_files
 ```
 #### 解凍
 ```bash
-tar -czvf archive_name.tar.gz /path/to/directory_or_files
+tar -xvf archive_name.tar.gz /path/to/directory_or_files
 ```
 #### .tar.gz
 
