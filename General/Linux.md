@@ -239,21 +239,15 @@ tar -xzvf filename.tar.gz
 ```
 
 #### .tar.bz2
-
 ##### 圧縮
-
 ```bash
 tar -jcvf xxxx.tar.bz2 directory
 ```
-
 ##### 解凍
-
 ```bash
 tar -jxvf xxxx.tar.bz2
 ```
-
 #### 7zip
-
 ```bash
 # 7zipのコマンドがありませんでしたので、必要であれば追記してください。
 ```
@@ -286,20 +280,25 @@ exeのあるファイルを表示
 awk '{print $6}' wordpress.log | sort | uniq -c
 ```
 ### sed
-例1: 標準入力からバックスラッシュを削除
+####標準入力からバックスラッシュを削除
 ```bash
 echo "User\\Name" | sed 's/User\\//g'
 ```
 このコマンドを実行すると、「UserName」が出力されます。
 
-例2: ファイル内の「User」からバックスラッシュを削除
+#### ファイル内の「User」からバックスラッシュを削除
 ```bash
 
 sed 's/User\\//g' inputfile.txt > outputfile.txt
 ```
-例3: awkとの組み合わせ
+#### awkとの組み合わせ
 ```bash
  awk '{print $3}' users.txt| sed 's/User\\//g'  > username.txt
+```
+#### Interface名を全変更
+```bash
+![image](https://github.com/user-attachments/assets/2f042e29-36ba-49dd-bf95-592a8c8a0e10)
+
 ```
 ---
 ### cp
