@@ -45,3 +45,43 @@ Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\\Windows\\NTDS"
 ## 全体の解説
 
 このコマンドは、新しい AD DS フォレストを作成し、`cs.org` ドメインを設定します。DNS サーバーもインストールされ、データベースおよびログファイルは `C:\Windows\NTDS` に保存されます。また、フォレストおよびドメインの機能レベルは Windows Server 2016 に設定され、インストールが完了するとサーバーは再起動されます。
+
+### エラー
+`Install-ADDSForest` コマンドが "認識可能なコマンドではない" というエラーを返す場合、いくつかの原因が考えられます。以下は、エラーを解決するためのチェックリストです。
+
+## 1. **AD DS モジュールがインストールされているか確認**
+
+`Install-ADDSForest` コマンドは Active Directory ドメインサービス (AD DS) の一部なので、このモジュールがインストールされていないとエラーになります。以下の手順でモジュールをインストールできます。
+
+### コマンドでインストール
+```powershell
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+```
+
+このコマンドで、AD DS と必要な管理ツールがインストールされます。
+
+## 2. **PowerShell を管理者権限で実行**
+
+PowerShell は管理者権限で実行する必要があります。右クリックして「管理者として実行」を選んで PowerShell を起動してください。
+
+## 3. **必要なモジュールがインポートされているか確認**
+
+AD DS 関連のコマンドレットが認識されない場合、モジュールが読み込まれていない可能性があります。以下のコマンドを実行して、モジュールをインポートします。
+
+```powershell
+Import-Module ADDSDeployment
+```
+
+これにより、AD DS 関連のコマンドが PowerShell で認識されるようになります。
+
+## 4. **サーバーが Windows Server であることを確認**
+
+`Install-ADDSForest` は Windows Server の機能です。クライアント OS（例えば Windows 10 など）ではこのコマンドを使用できないため、Windows Server 環境で実行する必要があります。
+
+## 5. **再インストールや再起動の確認**
+
+モジュールや機能をインストールした後、サーバーを再起動して変更が有効になる場合もあります。再起動を試みてください。
+
+---
+
+上記の手順を試してもエラーが解決しない場合は、エラーメッセージや環境の詳細を教えていただければ、さらに具体的なアドバイスができます。
