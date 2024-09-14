@@ -22,7 +22,7 @@
 - [Recon_&_Enumeration](03_Red-Team_and_Pentest/[Recon_&_Enum/)
 - [Web_Attacks](03_Red-Team_and_Pentest/[03_Web_Attacks/)
 - [Exploitation](03_Red-Team_and_Pentest/04_Exploitation/)
-- [Linux_Privilage](03_Red-Team_and_Pentest/05_Linux_Privilage/)
+- [Linux_Privilage](03_Red-Team_and_Pentest/05_Linux_Privilege/)
 - [Windows_Privilage](03_Red-Team_and_Pentest/06_Windows_Privilage/)
 - [Post_Exploitation](03_Red-Team_and_Pentest/07_Post_Exploitation/)
 - [Active_Directory](03_Red-Team_and_Pentest/08Active_Directory/)
