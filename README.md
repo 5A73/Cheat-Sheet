@@ -27,7 +27,7 @@
 - [Post_Exploitation](03_Red-Team_and_Pentest/07_Post_Exploitation/)
 - [Active_Directory](03_Red-Team_and_Pentest/08Active_Directory/)
 - [Tools](03_Red-Team_and_Pentest/09_Tools/)
-  - [Crack](03_Red-Team_and_Pentest/09_Tools/crack/)
+  - [Crack](03_Red-Team_and_Pentest/09_Tools/crack)
     - Hydra
     - John_The_Ripper
     - Firefox
