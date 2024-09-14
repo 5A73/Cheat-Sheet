@@ -35,5 +35,6 @@
 ## System Deployment
 - [ファイル転送]
 - [通信点検]
-- [Vulnerable_VM]
-  - AD
+- [VM]
+  - Kali Linux
+  - Vulnerable AD
