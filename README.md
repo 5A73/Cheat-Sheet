@@ -30,7 +30,7 @@
 - [Active_Directory](03_Red-Team_and_Pentest/08Active_Directory/)
 - [Tools](03_Red-Team_and_Pentest/09_Tools/)
   - [Crack](03_Red-Team_and_Pentest/09_Tools/Crack)
-    - [Firefox](03_Red-Team_and_Pentest/09_Tools/Crack/Firefox_Password_Decryptor.md) 
+    - [Firefox_password](03_Red-Team_and_Pentest/09_Tools/Crack/Firefox_Password_Decryptor.md) 
     - [Hydra](03_Red-Team_and_Pentest/09_Tools/Crack/Hydra.md)
     - [John_The_Ripper](03_Red-Team_and_Pentest/09_Tools/Crack/John_The_Ripper.md)
     - [WebSite](03_Red-Team_and_Pentest/09_Tools/Crack/WebSite.md)
