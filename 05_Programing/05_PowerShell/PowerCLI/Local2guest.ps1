@@ -21,6 +21,7 @@ Copy-VMGuestFile -Source $sourceFilePath -Destination $destinationFilePath -VM $
 # 接続を切断
 Disconnect-VIServer -Server <vCenter-Server> -Confirm:$false
 ```
+<#
 スクリプトの説明:
 Connect-VIServer: vCenterサーバーまたはESXiホストに接続します。<vCenter-Server>の部分には、実際のvCenterまたはESXiホストのアドレスを指定します。
 Get-Credential: ゲストOSにログインするためのユーザー名とパスワードを取得します。
@@ -34,3 +35,4 @@ Disconnect-VIServer: スクリプトの最後にvCenterまたはESXiホストか
 注意点:
 ゲストOSにVMware Toolsがインストールされている必要があります。
 ゲストOSのログイン資格情報が必要です。
+#>
