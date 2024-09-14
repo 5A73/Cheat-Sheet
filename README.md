@@ -1,7 +1,9 @@
 # Cheat-Sheet
 ## [General](01_General/)
 
-## [System_Development](02_System_Development/)
+## [System_Deployment](02_System_Deployment/)
+
+## [Red-Team_&_Pentest](03_Red-Team_and_Pentest/)
 
 ## [Blue_Team](04_Blue-Team/)
 ### [IDS](#https://github.com/5A73/Cheat-Sheet/tree/main/Blue%20Team)
