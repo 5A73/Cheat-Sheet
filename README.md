@@ -12,7 +12,7 @@
 - [通信点検]
 - [VM]
     - Kali_Linux
-#- [Vulnerable]
+  - [Vulnerable](Vulnerable/)
      - AD
 ---
 
