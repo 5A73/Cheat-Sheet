@@ -9,12 +9,12 @@
 
 ## [System_Deployment](02_System_Deployment/)
 - [git](02_System_Deployment/git.md)
-- [ファイル転送]
-- [通信点検]
-- [VM]
-    - Kali_Linux
-  - [Vulnerable](Vulnerable/)
-     - AD
+- [ファイル転送](02_System_Deployment/)
+- [通信点検](02_System_Deployment/)
+- [VM](02_System_Deployment/)
+    - [Kali_Linux](02_System_Deployment/)
+  - [Vulnerable](02_System_Deployment/Vulnerable/)
+     - [AD](02_System_Deployment/Vulnerable/AD.md)
 ---
 
 ## [Red-Team_&_Pentest](03_Red-Team_and_Pentest/)
