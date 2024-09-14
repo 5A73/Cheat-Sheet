@@ -3,9 +3,8 @@
 - firefox_decrypt.py は、Mozilla Firefoxに保存されたパスワードを復号するPythonスクリプトです。このツールは、Firefoxの内部データベースファイルから暗号化されたパスワードを抽出し、それらを復号して表示します。
 - python3で動作する。
 #### リポジトリ
-```url
+
 https://github.com/unode/firefox_decrypt
-```
 使用方法
 
 ```bash
