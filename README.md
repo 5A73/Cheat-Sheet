@@ -29,9 +29,9 @@
 - [Tools](03_Red-Team_and_Pentest/09_Tools/)
   - [Crack](03_Red-Team_and_Pentest/09_Tools/Crack)
     - [Firefox](03_Red-Team_and_Pentest/09_Tools/Crack/Firefox_Password_Decryptor.md) 
-    - [Hydra]
-    - [John_The_Ripper]
-
+    - [Hydra](03_Red-Team_and_Pentest/09_Tools/Crack/Hydra.md)
+    - [John_The_Ripper](03_Red-Team_and_Pentest/09_Tools/Crack/John_The_Ripper.md)
+　　 - [WebSite](03_Red-Team_and_Pentest/09_Tools/Crack/WebSite.md)
 ---
 
 ## [Blue_Team](04_Blue-Team/)
