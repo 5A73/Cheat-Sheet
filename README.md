@@ -2,11 +2,27 @@
 ## [General](01_General/)
 
 ## [System_Deployment](02_System_Deployment/)
-
+- [ファイル転送]
+- [通信点検]
+- [VM]
+  - Kali Linux
+  - Vulnerable AD
 ## [Red-Team_&_Pentest](03_Red-Team_and_Pentest/)
-
+- [OSINT](OSINT/)
+- [Recon & Enumeration]
+- [Web Attacks]
+- [Exploitation]
+- [Linux Privilage]
+- [Windows Privilage]
+- [Post Exploitation]
+- [Active Directory]
+- [Tools]
+  - Crack
+    - Hydra
+    - John The Ripper
+    - Firefox
 ## [Blue_Team](04_Blue-Team/)
-### [IDS](#https://github.com/5A73/Cheat-Sheet/tree/main/Blue%20Team)
+### [IDS]()
 - Security Onion
 ### [デジタルフォレンジック]
 ### [Log分析]()
@@ -22,27 +38,3 @@
 - [動的解析]
 - [静的解析]
   - [Ghidra]
-
-
-### [Red_Team_&_Penetration_Test](#https://github.com/5A73/Cheat-Sheet/tree/main/Red%20Team%20%26%20Penetration%20Test)
-
-- [General](General/)
-- [Recon & Enumeration]
-- [Web Attacks]
-- [Exploitation]
-- [Linux Privilage]
-- [Windows Privilage]
-- [Post Exploitation]
-- [Active Directory]
-- [Tools]
-  - Crack
-    - Hydra
-    - John The Ripper
-    - Firefox
-
-## System Deployment
-- [ファイル転送]
-- [通信点検]
-- [VM]
-  - Kali Linux
-  - Vulnerable AD
