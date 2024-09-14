@@ -14,7 +14,7 @@
 - [VM](02_System_Deployment/)
     - [Kali_Linux](02_System_Deployment/)
   - [Vulnerable](02_System_Deployment/Vulnerable/)
-     - [AD](02_System_Deployment/Vulnerable/AD.md)
+     - [AD](02_System_Deployment/VM/Vulnerable/AD.md)
 ---
 
 ## [Red-Team_&_Pentest](03_Red-Team_and_Pentest/)
@@ -29,8 +29,8 @@
 - [Tools](03_Red-Team_and_Pentest/09_Tools/)
   - [Crack](03_Red-Team_and_Pentest/09_Tools/Crack)
     - [Firefox](03_Red-Team_and_Pentest/09_Tools/Crack/Firefox_Password_Decryptor.md) 
-    - Hydra
-    - John_The_Ripper
+    - [Hydra]
+    - [John_The_Ripper]
 
 ---
 
