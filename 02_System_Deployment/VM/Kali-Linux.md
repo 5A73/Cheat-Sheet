@@ -33,6 +33,12 @@ sudo systemctl start xrdp
 ```
 ---
 
-## Tools
-- wpscan
+## Add Tools
+
+- firefox
+  - Fox Proxy
+  - Wappalyser
+- feroxbuster
+
+
 - Bloodhound
