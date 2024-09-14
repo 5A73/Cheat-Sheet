@@ -75,5 +75,4 @@ sessions
 sessions -i <ID>
 ```
 
-これで、ターゲットシステムに対するリモート操作が可能になります。注意して操作を行ってください。
-![image](https://github.com/user-attachments/assets/d29de349-fb6b-4b19-97b6-9a77b3e3f18f)
+これで、ターゲットシステムに対するリモート操作が可能になります。注意して操作を行ってくだささい。
