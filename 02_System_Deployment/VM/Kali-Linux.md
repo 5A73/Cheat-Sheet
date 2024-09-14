@@ -20,14 +20,12 @@ Kali LinuxにXRDPをインストールしてリモートデスクトップ接続
 ターミナルを開き、以下のコマンドでXRDPをインストールします：
 
 ```bash
-
 sudo apt update
 sudo apt install xrdp
 ```
 2. XRDPサービスを開始し、自動起動を有効にします：
 
 ```bash
-
 sudo systemctl enable xrdp
 sudo systemctl start xrdp
 ```
@@ -41,4 +39,5 @@ sudo systemctl start xrdp
 - feroxbuster
 
 
+- chrome
 - Bloodhound
