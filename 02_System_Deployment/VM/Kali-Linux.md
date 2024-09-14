@@ -12,7 +12,26 @@
 - [アニメーション設定](https://qiita.com/KoyanagiHitoshi/items/318d4b8ef3b4e5b87390)
 - [tmuxの使い方](https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab)
 ## Download
-- 
+---
+### xrdp
+Kali LinuxにXRDPをインストールしてリモートデスクトップ接続を行うための手順を以下に示します。
+
+1. XRDPのインストール
+ターミナルを開き、以下のコマンドでXRDPをインストールします：
+
+```bash
+
+sudo apt update
+sudo apt install xrdp
+```
+2. XRDPサービスを開始し、自動起動を有効にします：
+
+```bash
+
+sudo systemctl enable xrdp
+sudo systemctl start xrdp
+```
+---
 
 ## Tools
 - wpscan
