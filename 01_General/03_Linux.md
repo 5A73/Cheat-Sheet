@@ -54,23 +54,28 @@
 - [tmuxの使い方](https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab)
 
 ### カーネルバージョン変更
-
+#### 以前のバージョンのカーネルパッケージを検索します
 ```bash
-# 以前のバージョンのカーネルパッケージを検索します
 apt search linux-image
-
-# 適切な以前のバージョンのカーネルパッケージをインストールします
+```
+#### 適切な以前のバージョンのカーネルパッケージをインストールします
+```bash
 apt install linux-image-version
-
-# 新しいカーネルをアンインストールします
+```
+#### 新しいカーネルをアンインストールします
+```bash
 apt purge linux-image-<new_version>
-
-# ブートローダーを更新します
+```
+#### ブートローダーを更新します
+```bash
 update-grub
-
-# システムを再起動します
+```
+#### システムを再起動します
+```bash
 reboot
 ```
+---
+
 ## HDDの使用状況
 ### df
 ```bash
@@ -176,7 +181,7 @@ curl -F "file=@mydocument.pdf" https://example.com/upload
 mysql -u username -p
 ```
 ```bash
-mysql -h localhost -u username -p
+mysql -h RemoteIP -u username -p
 show databases;
 use databasename;
 show tables;
