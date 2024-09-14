@@ -30,7 +30,10 @@
 - [Post Exploitation]
 - [Active Directory]
 - [Tools]
-
+  - Crack
+    - Hydra
+    - John The Ripper
+    - Firefox
 
 ## System Deployment
 - [ファイル転送]
