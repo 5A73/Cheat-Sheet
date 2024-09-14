@@ -17,7 +17,7 @@
 ---
 
 ## [Red-Team_&_Pentest](03_Red-Team_and_Pentest/)
-- [OSINT](OSINT/)
+- [OSINT](03_Red-Team_and_Pentest/OSINT/)
 - [Recon_&_Enumeration]
 - [Web_Attacks]
 - [Exploitation]
