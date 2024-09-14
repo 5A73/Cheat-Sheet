@@ -8,7 +8,7 @@
 ---
 
 ## [System_Deployment](02_System_Deployment/)
-- [git](02_System_Deployment/git)
+- [git](02_System_Deployment/git.md)
 - [ファイル転送]
 - [通信点検]
 - [VM]
