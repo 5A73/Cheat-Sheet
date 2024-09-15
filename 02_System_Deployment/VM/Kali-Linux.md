@@ -37,6 +37,8 @@ sudo systemctl start xrdp
   - Fox Proxy
   - Wappalyser
 - feroxbuster
+- gobuster
+- arjun
 
 
 - chrome
