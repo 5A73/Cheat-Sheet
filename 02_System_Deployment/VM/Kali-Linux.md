@@ -39,7 +39,8 @@ sudo systemctl start xrdp
 - feroxbuster
 - gobuster
 - arjun
-
-
+- knockd
 - chrome
+
+
 - Bloodhound
