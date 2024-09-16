@@ -35,7 +35,7 @@
    - [grep](#grep)
    - [echo](#echo)
    - [Linuxでdocxやxlsxファイルを表示する方法](#Linuxでdocxやxlsxファイルを表示する方法)
-9. [git](#git)
+9. [git](/02_System_Deployment/git.md)
 
 ---
 
