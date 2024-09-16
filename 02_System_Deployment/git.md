@@ -1,3 +1,14 @@
+# git
+## リポジトリのクローン
+```bash
+git clone https://github.com/5A73/Cheat-Sheet.git
+```
+### git log
+```bash
+git log
+```
+![image](https://github.com/user-attachments/assets/e8e93304-59b6-4ac6-9315-3c43fc8cc1a2)
+
 ## フォルダ名の変更
 1. リポジトリのクローン
 
