@@ -1,6 +1,4 @@
-以下は、Exchange Serverを構築する手順の目次付きガイドをMarkdown形式で作成しました。
 
-```markdown
 # Exchange Server 構築手順
 
 ## 目次
