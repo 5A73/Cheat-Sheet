@@ -1,24 +1,7 @@
-以下は、指定された内容を元に、Windowsの設定やコマンドに関する情報をマークダウン形式で整理したものです。Linuxのフォーマットに合わせて清書しました。
-
----
-
-# 設定関連
-
-## WSL
-
-### 起動
-```bash
-wsl
-```
-
-### GUIの起動
-```bash
-kex --win -m
-```
-![image](https://github.com/user-attachments/assets/082c90bc-4de1-4d81-9e08-b891d717da8d)
 
 # 主要コマンド
-
+# プロセス確認
+## tasklist
 ## Command Prompt
 ### lock
 ```cmd
