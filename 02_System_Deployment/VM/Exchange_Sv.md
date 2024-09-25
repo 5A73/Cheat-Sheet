@@ -67,6 +67,8 @@ Exchange ServerはActive Directoryと連携するため、インストール前�
 ### Outlook クライアントの設定
 1. Outlookクライアントをインストールし、Exchange Serverに接続します。
 2. 自動検出機能（Autodiscover）を利用して簡単に接続を設定します。
+3. ExchangeサーバのサービスのIMAP4を起動し、自動起動にする
+4. プロキシを使用している場合はで*.domainname.ne.jpを除外する
 
 ### Webメール（OWA）の確認
 1. ブラウザから`https://[サーバーのFQDN]/owa`にアクセスし、OWA（Outlook Web Access）が動作するか確認します。
